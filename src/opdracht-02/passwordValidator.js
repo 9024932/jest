@@ -3,6 +3,12 @@
  */
 export function validatePassword(password) {
   const errors = [];
+
+
+
+
+
+
   
   if (password.length < 8) {
     errors.push('Minimaal 8 karakters');
