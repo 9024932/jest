@@ -12,8 +12,8 @@ export function isValidEmail(email) {
 export function isValidPhone(phone) {
   // Verwijder spaties en streepjes
   const cleaned = phone.replace(/[\s-]/g, '');
-  // Check of het 10 cijfers is en begint met 06 of 31
-  return /^(06|31)\d{8}$/.test(cleaned);
+  // Check of het 10 cijfers is en begint met 06
+  return /^06\d{8}$/.test(cleaned);
 }
 
 /**
@@ -30,19 +30,20 @@ export function isValidPostcode(postcode) {
  */
 export function validateForm(formData) {
   const errors = [];
-  
+
   if (!isValidEmail(formData.email)) {
     errors.push('Ongeldig email adres');
   }
-  
+
   if (!isValidPhone(formData.phone)) {
     errors.push('Ongeldig telefoonnummer');
   }
-  
+
   if (!isValidPostcode(formData.postcode)) {
     errors.push('Ongeldige postcode');
   }
-  
+
+  // Return een object met zowel isValid als errors
   return {
     isValid: errors.length === 0,
     errors: errors
